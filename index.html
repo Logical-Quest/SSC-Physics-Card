@@ -3,94 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Physics</title>
+    <title>Physics 1st Paper</title>
     <style>
-body, h1, h2, h3, p, button {
-    margin: 0;
-    padding: 0;
-}
-
-/* Center content */
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
-}
-
-/* Card styles */
-.card {
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Distribute content evenly, pushing button to the bottom */
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow:  5px 5px 5px 5px rgba(0.4, 0.4, 0.4, 0.4);
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    height: 350px; /* Increase the height */
-}
-      .buttons {
-    margin-top: auto; /* Push buttons to the bottom */
-}  
-
-/* Button styles */
-.btn {
-    padding: 10px 20px;
-     font-size: 20px;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    margin-top: 10px;
-    width: 120px;
-    height: 40px;
-}
-
-.primary-btn {
-    background: linear-gradient(to bottom right, #c4008d, #ff4c4c);
-			color: #fff;
-}
-
-.secondary-btn {
-    background: linear-gradient(to bottom right, #0080ff, #0066cc);
-    color: #ffffff;
-    margin-left: 10px;
-}
-        .primary-btn:hover,
-.secondary-btn:hover {
-    transform: scale(1.1); /* Scale button on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
-}
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-    .card {
-        width: 65%;
-    }
-
-    .btn {
-        font-size: 12px;
-    }
-}
-
-
-</style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #ff6b6b, #c4008d);
+            --secondary-gradient: linear-gradient(135deg, #4facfe, #00f2fe);
+            --card-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            --hover-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        body, h1, h2, h3, p, button {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #f5f7fa 0%, #e6e6fa 100%);
+        }
+    
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            width: 280px; /* Default width for mobile */
+            text-align: center;
+            height: 380px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--primary-gradient);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+    
+        .card h2 {
+            color: #ff6b6b;
+            font-size: 28px;
+            font-weight: 700;
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+        
+        .card h1 {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 30px;
+            letter-spacing: 1px;
+        }
+    
+        .buttons {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+    
+        .btn {
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            color: white;
+            min-width: 120px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 1;
+        }
+        
+        .btn:hover::before {
+            opacity: 0.9;
+        }
+    
+        .primary-btn {
+            background: var(--primary-gradient);
+        }
+        
+        .primary-btn::before {
+            background: linear-gradient(135deg, #c4008d, #ff6b6b);
+        }
+    
+        .secondary-btn {
+            background: var(--secondary-gradient);
+        }
+        
+        .secondary-btn::before {
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+        }
+    
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+    
+        /* Responsive adjustments */
+        @media screen and (max-width: 480px) {
+            .card {
+                width: 75%;
+                height: 350px;
+                padding: 25px;
+            }
+            
+            .btn {
+                font-size: 14px;
+                padding: 10px 20px;
+                min-width: 100px;
+            }
+            
+            .card h1 {
+                font-size: 28px;
+            }
+            
+            .card h2 {
+                font-size: 24px;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .card {
+                width: 320px;
+                height: 400px;
+            }
+            
+            .card h1 {
+                font-size: 36px;
+                margin-top: 40px;
+            }
+            
+            .card h2 {
+                font-size: 32px;
+            }
+            
+            .btn {
+                padding: 14px 28px;
+                font-size: 17px;
+            }
+        }
+        
+        @media screen and (min-width: 1024px) {
+            .card {
+                width: 350px;
+                height: 420px;
+                padding: 35px;
+            }
+            
+            .card h1 {
+                font-size: 38px;
+            }
+            
+            .card h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="card">
-        <font color="orange"><h2>Physics</h2></font><br><br><br><br><br> <h1>পদার্থবিজ্ঞান</h1>
+        <h2>Physics</h2>
+        <h1>1st Paper</h1>
         <div class="buttons">
-        <button class="btn primary-btn" onclick="window.open('https://sites.google.com/view/logical-quest-student-ssc/ssc-physics-question','_blank')">Ask me</button>
-        <button class="btn secondary-btn" onclick="window.open('https://logical-quest.github.io/SSC-Physics-Answer/','_blank')">Answers</button>
+            <button class="btn primary-btn" onclick="window.open('https://logical-quest.github.io/SSC-Physics-Student-Question/','_self')">Ask me</button>
+            <button class="btn secondary-btn" onclick="window.open('https://logical-quest.github.io/SSC-Physics-Answer/','_self')">Answers</button>
         </div>
     </div>
-
-
 </body>
 </html>
